@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:integration="http://www.springframework.org/schema/integration"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/aop
+     		http://www.springframework.org/schema/aop/spring-aop.xsd
+			http://www.springframework.org/schema/integration
+			http://www.springframework.org/schema/integration/spring-integration.xsd
+			http://www.springframework.org/schema/jdbc 
+			http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+	<!--  <jdbc:initialize-database enabled="true"
+		data-source="dataSource" ignore-failures="ALL">
+		<jdbc:script location="/sql/00_01_Mersal_DDL_IFEX.sql" />
+		<jdbc:script location="/sql/populate.sql" />
+	</jdbc:initialize-database>-->
+
+	<context:annotation-config />
+
+	<context:component-scan
+		base-package="edu.mum.m2" />
+
+	<aop:aspectj-autoproxy />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:errorMessages" />
+	</bean>
+
+	<bean id="messageAccessor"
+		class="org.springframework.context.support.MessageSourceAccessor">
+		<constructor-arg ref="messageSource" />
+	</bean>
+
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+
+</beans>
