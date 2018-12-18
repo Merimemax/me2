@@ -10,7 +10,7 @@ public class Main {
     public final static String[] configFiles = {
             "/META-INF/spring/context/application-context.xml",
             "/META-INF/spring/context/data-access-context.xml",
-            "/META-INF/spring/edu.mum.m2.integration/amqp-context.xml",
+            "/META-INF/spring/integration/amqp-context.xml",
             "/META-INF/spring/context/security-context.xml",
             "/META-INF/spring/context/validation-context.xml",
             "/META-INF/spring/batch/batch-config.xml",

@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-	@Pointcut("execution(* edu.mum.m2.service..*(..))")
+	@Pointcut("execution(* edu.mum.me2.service..*(..))")
 		public void applicationMethod() {
 	}
 	
-	@Pointcut("execution(* edu.mum.m2.dao..*(..))")
+	@Pointcut("execution(* edu.mum.me2.dao..*(..))")
 		public void daoMethod() {
 	}
 
